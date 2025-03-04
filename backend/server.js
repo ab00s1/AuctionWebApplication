@@ -254,7 +254,7 @@ app.delete("/delete-item/:id", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "Item not found" });
     }
 
-    if (item.creator !== req.user.email) {
+    if (item.creator !== req.user.fullName) {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
