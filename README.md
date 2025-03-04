@@ -128,3 +128,4 @@ Refer to the **backend repository** for full API documentation:
 ---
 
 ### 🚀 **Happy Bidding!** 🏆  
+**working url**: *https://place-the-bid.netlify.app/*
