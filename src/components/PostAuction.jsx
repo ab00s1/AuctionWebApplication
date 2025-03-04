@@ -29,7 +29,7 @@ function PostAuction() {
         console.log(data);
         const highestId =
           data.length > 0 ? Math.max(...data.map((item) => item._id)) : 0;
-        setNewId(highestId + 1); // Assign next available ID
+        setNewId(highestId + 1);
       })
       .catch((err) => console.error("Error fetching items:", err));
   }, [nav]);
@@ -57,9 +57,17 @@ function PostAuction() {
     };
 
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("User is not authenticated");
+      }
+  
       const response = await fetch("https://online-auction-platform-backend.onrender.com/post-item", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
         body: JSON.stringify(itemObj),
       });
 
