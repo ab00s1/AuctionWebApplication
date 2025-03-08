@@ -43,7 +43,7 @@ function Dashboard() {
     };
 
     fetchItems();
-    const interval = setInterval(fetchItems, 1000); // Refresh every 1s
+    const interval = setInterval(fetchItems, 1000);
     return () => clearInterval(interval);
   }, [nav, searchQuery]);
 
@@ -101,7 +101,6 @@ function Dashboard() {
         throw new Error("Failed to update bid");
       }
 
-      const updatedItem = await response.json();
 
       setItems((prevItems) =>
         prevItems.map((item) =>
